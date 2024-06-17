@@ -1,25 +1,32 @@
-import React from "react";
 
-const PracticalExperience = () => {
+
+const PracticalExperience = ({experienceInfo, setExperienceInfo}) => {
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setExperienceInfo((prevState) =>
+      prevState.map((experience) =>
+        experience.name === name ? { ...experience, value } : experience
+      )
+    );
+  };
+
   return (
-    <div>
-      <form >
-        <input type="text" placeholder="Company..." />
-        <input type="text" placeholder="Title" />
-        <input type="text" placeholder="Responsibilites" />
-        <input type="number" placeholder="Date" />
-        <input type="submit" value="Submit" />
-        <button type="button">Edit</button>
-      </form>
-
-    </div>
+    <>
+      {experienceInfo.map(({ id, type, value, name, label }) => (
+        <form key={id} action="">
+          <label htmlFor={name}>{label}</label>
+          <input
+            type={type}
+            name={name}
+            value={value}
+            onChange={handleInputChange}
+            required
+          />
+        </form>
+      ))}
+    </>
   );
 };
 
 export default PracticalExperience;
-
-{/* <h1>Experience</h1>
-<h2>Frito-Lay</h2>
-<h2>Merchandiser</h2>
-<h2>Merchadise and rotate Frito-Lay products.</h2>
-<h3>2024-present</h3> */}

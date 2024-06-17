@@ -1,40 +1,32 @@
-import React, { useState } from "react";
 
-const array = [
-  { id: 0, type: "text", value: "", name: "firstName", label: "First Name" },
-  { id: 1, type: "text", value: "", name: "lastName", label: "Last Name" },
-  { id: 2, type: "email", value: "", name: "email", label: "Email" },
-  { id: 3, type: "tel", value: "", name: "phone", label: "Phone", pattern : "[0-9]{3}-[0-9]{3}-[0-9]{4}" },
-];
-
-const GeneralInformation = () => {
-  const [inputValues, setInputValues] = useState(array);
+const GeneralInformation = ({personalInfo, setPersonalInfo}) => {
+// console.log(personalInfo,"personal");
 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setInputValues((prevState) =>
-      prevState.map((inputValue) =>
-        inputValue.name === name ? { ...inputValue, value } : inputValue
+    setPersonalInfo((prevState) =>
+      prevState.map((information) =>
+        information.name === name ? { ...information, value } : information
       )
     );
   };
 
   return (
     <>
-      {inputValues.map(({ id, type, value, name, label, pattern  }) => (
+      {personalInfo.map(({ id, type, value, name, label, }) => (
         <form key={id} action="">
           <label htmlFor={name}>{label}</label>
           <input
             type={type}
             name={name}
             value={value}
-            pattern={pattern}
             onChange={handleInputChange}
             required
           />
         </form>
       ))}
+
     </>
   );
 };

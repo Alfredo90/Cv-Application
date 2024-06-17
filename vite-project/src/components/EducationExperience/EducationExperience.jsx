@@ -1,24 +1,31 @@
-import React from "react";
 
-const EducationExperience = () => {
+
+const EducationExperience = ({ educationInfo, setEducationInfo }) => {
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEducationInfo((prevState) =>
+      prevState.map((education) =>
+        education.name === name ? { ...education, value } : education
+      )
+    );
+  };
+
   return (
-    <div>
-      <form>
-        <input type="text" placeholder="School..." />
-        <input type="text" placeholder="Study..." />
-        <input type="number" placeholder="Date Of Study" />
-        <input type="submit" value="Submit" />
-        <button type="button">Edit</button>
-      </form>
-    </div>
+    <>
+      {educationInfo.map(({ id, type, value, name, label }) => (
+        <form key={id} action="">
+          <label htmlFor={name}>{label}</label>
+          <input
+            type={type}
+            name={name}
+            value={value}
+            onChange={handleInputChange}
+            required
+          />
+        </form>
+      ))}
+    </>
   );
 };
 
 export default EducationExperience;
-
-{
-  /* <h1>Education</h1>
-<h2>W.H. Adamson</h2>
-<h2>Diploma</h2>
-<h2>2004</h2> */
-}
