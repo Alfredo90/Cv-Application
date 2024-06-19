@@ -17,14 +17,14 @@ const Form = ({
         setPersonalInfo={setPersonalInfo}
       />
       <hr />
-      <EducationExperience
-        educationInfo={educationInfo}
-        setEducationInfo={setEducationInfo}
-      />
-      <hr />
       <PracticalExperience
         experienceInfo={experienceInfo}
         setExperienceInfo={setExperienceInfo}
+      />
+      <hr />
+      <EducationExperience
+        educationInfo={educationInfo}
+        setEducationInfo={setEducationInfo}
       />
     </div>
   );

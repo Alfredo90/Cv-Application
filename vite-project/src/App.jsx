@@ -14,22 +14,27 @@ function App() {
   // console.log(experienceInfo)
   const [educationInfo, setEducationInfo] = useState(educationData);
   // console.log(educationInfo)
+  // const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <div className="main-contianer">
-      <Form
-        personalInfo={personalInfo}
-        setPersonalInfo={setPersonalInfo}
-        experienceInfo={experienceInfo}
-        setExperienceInfo={setExperienceInfo}
-        educationInfo={educationInfo}
-        setEducationInfo={setEducationInfo}
-      />
-      <Resume
-        personalInfo={personalInfo}
-        experienceInfo={experienceInfo}
-        educationInfo={educationInfo}
-      />
+    <div className="main-container">
+      <div className="form-container">
+        <Form
+          personalInfo={personalInfo}
+          setPersonalInfo={setPersonalInfo}
+          experienceInfo={experienceInfo}
+          setExperienceInfo={setExperienceInfo}
+          educationInfo={educationInfo}
+          setEducationInfo={setEducationInfo}
+        />
+      </div>
+      <div className="resume-container">
+        <Resume
+          personalInfo={personalInfo}
+          experienceInfo={experienceInfo}
+          educationInfo={educationInfo}
+        />
+      </div>
     </div>
   );
 }
