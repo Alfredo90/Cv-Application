@@ -12,7 +12,7 @@ const Resume = ({ personalInfo, educationInfo, experienceInfo }) => {
           </div>
         ))}
       </div>
-      {/* <hr />
+      <hr />
       <div className="experience-section">
         <h1>Experience</h1>
         {experienceInfo.map(({ id, value, name }) => (
@@ -29,7 +29,7 @@ const Resume = ({ personalInfo, educationInfo, experienceInfo }) => {
             </div>
           ))}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };

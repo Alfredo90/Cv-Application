@@ -9,11 +9,10 @@ import { useState } from "react";
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState(personalData);
-  // console.log(personalInfo)
   const [experienceInfo, setExperienceInfo] = useState(experienceData);
-  // console.log(experienceInfo)
   const [educationInfo, setEducationInfo] = useState(educationData);
-  // console.log(educationInfo)
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   // const [isEditing, setIsEditing] = useState(false);
 
   return (
