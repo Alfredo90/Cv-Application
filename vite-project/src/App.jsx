@@ -25,6 +25,8 @@ function App() {
           setExperienceInfo={setExperienceInfo}
           educationInfo={educationInfo}
           setEducationInfo={setEducationInfo}
+          isSubmitted={isSubmitted}
+          setIsSubmitted={setIsSubmitted}
         />
       </div>
       <div className="resume-container">

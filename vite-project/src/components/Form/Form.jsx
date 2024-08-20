@@ -9,12 +9,16 @@ const Form = ({
   setExperienceInfo,
   educationInfo,
   setEducationInfo,
+  setIsSubmitted,
+  isSubmitted,
 }) => {
   return (
     <div>
       <GeneralInformation
         personalInfo={personalInfo}
         setPersonalInfo={setPersonalInfo}
+        setIsSubmitted={setIsSubmitted}
+        isSubmitted={isSubmitted}
       />
       <hr />
       <PracticalExperience

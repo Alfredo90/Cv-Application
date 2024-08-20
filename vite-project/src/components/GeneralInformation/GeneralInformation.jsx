@@ -3,7 +3,8 @@ const GeneralInformation = ({ personalInfo, setPersonalInfo }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setPersonalInfo(personalInfo);
+    setPersonalInfo(personalInfo.value);
+
     console.log("submiting form");
   };
 
@@ -19,7 +20,7 @@ const GeneralInformation = ({ personalInfo, setPersonalInfo }) => {
   return (
     <>
       <form action="" onSubmit={handleSubmit}>
-        {personalInfo.map(({ id, type, value, name, label }) => (
+        {personalInfo?.map(({ id, type, value, name, label }) => (
           <div key={id}>
             <label htmlFor={name}>{label}</label>
             <input
