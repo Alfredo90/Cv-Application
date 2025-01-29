@@ -1,69 +1,47 @@
-import EmployInfo from "../EmploymentInfo/EmployInfo";
-import GeneralInfo from "../GeneralInfo/GeneralInfo";
+import EducationInfo from "../EducationInfo/EducationInfo";
+import EmploymentInfo from "../EmploymentInfo/EmploymentInfo";
+import PersonalInfo from "../PersonalInfo/PersonalInfo";
+import dummyData from "../../data/dummyData";
 import { useState } from "react";
 
 const FormSection = () => {
-  const [inputValue, setInputValue] = useState([
-    {
-      name: "firstName",
-      value: "",
-      type: "text",
-      placeholder: "first name",
-      title: "First Name",
-    },
-    {
-      name: "lastName",
-      value: "",
-      type: "text",
-      placeholder: "last name",
-      title: "Last Name",
-    },
-    {
-      name: "email",
-      value: "",
-      type: "email",
-      placeholder: "example@gmail.com",
-      title: "Email",
-    },
-    {
-      name: "phone",
-      value: "",
-      type: "tel",
-      placeholder: "xxx-xxx-xxxx",
-      title: "Phone",
-    },
-  ]);
+  const [formData, setFormData] = useState(dummyData);
 
-  //Function to update the value of any specific input field.
-  const handleChange = (e) => {
-    const { name, value } = e.target; // Destructure the name and value from the event
+  const handleFormChange = (section, field, value) => {
+    // 1. Get the current data for the specific section (e.g., "employmentForm")
+    const currentSection = formData[section];
 
-    setInputValue((prevState) =>
-      prevState.map(
-        (input) => (input.name === name ? { ...input, value: value } : input) // Update the matching input field
-      )
-    );
+    // 2. Create a new version of the section with the updated field
+    const updatedSection = {
+      ...currentSection, // Copy everything from the current section
+      [field]: value, // Update only the specific field
+    };
+
+    // 3. Create a new version of the entire formData object
+    const updatedFormData = {
+      ...formData, // Copy everything from the current formData
+      [section]: updatedSection, // Replace the updated section
+    };
+
+    // 4. Update the state with the new formData object
+    setFormData(updatedFormData);
   };
 
-  //  Function to handle form submission.
-  //    Prevents the default behavior (page reload) and logs the form data to the console.
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("submitted", inputValue);
-    setInputValue(inputValue.map((input) => ({ ...input, value: "" })));
-  };
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <GeneralInfo
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          handleChange={handleChange}
-        />
-        <EmployInfo />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
+    <div>
+      <PersonalInfo
+        personalData={formData.personalInfo}
+        handleChange={handleFormChange}
+      />
+      <EmploymentInfo
+        emplomentData={formData.employmentInfo}
+        handleChange={handleFormChange}
+      />
+      <EducationInfo
+        educationData={formData.educationInfo}
+        handleChange={handleFormChange}
+      />
+    </div>
   );
 };
 
